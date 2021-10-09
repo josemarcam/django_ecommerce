@@ -7,7 +7,7 @@ from model_utils.models import TimeStampedModel
 
 class availableManager(models.Manager):
     def get_queryset(self):
-        return super().get_queryset().filter()
+        return super().get_queryset().filter(is_available = True)
 
 class Category(TimeStampedModel):
     name = models.CharField(max_length=255,unique=True)
@@ -23,7 +23,7 @@ class Category(TimeStampedModel):
         return self.name
 
     def get_absolute_url(self):
-        return reverse("products:listByCategory", kwargs={"slug": self.slug})
+        return reverse("products:list_by_category", kwargs={"slug": self.slug})
     
 class Product(TimeStampedModel):
     category = models.ForeignKey(
