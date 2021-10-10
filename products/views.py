@@ -2,11 +2,13 @@ from django.shortcuts import get_object_or_404
 from django.views.generic import DetailView, ListView
 import math
 from products.models import Product, Category
+from cart.forms import CartAddProductForm
 
 # Create your views here.
 
 class ProductDetailsView(DetailView):
     queryset = Product.available.all()
+    extra_context = {"form": CartAddProductForm()}
 
 class ProductListView(ListView):
     

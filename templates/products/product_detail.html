@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
 {% load static %}
+{% load widget_tweaks %}
 
 {% block title %}{{ product.name }}{% endblock title %}
 
@@ -17,15 +18,17 @@
         </div>
         <div class="col-lg-9">
             <h1 class="font-weight-bold">{{ product.name }}</h1>
-
-            {% if product.is_available %} 
-            <a class="btn btn-success btn-sm" href="">Comprar</a>
-            {% else %}
-            <a class="btn btn-danger btn-sm" href="">Comprar</a>
-            {% endif %}
-            
             <h2>R$ {{ product.price }}</h2>
             <p>{{ product.description }}</p>
+            <form class="form-group" action="{% url 'cart:add' product.id %}" method="post">
+                <p class="form-inline">
+                    {{ form.quantity.label_tag }}
+                    {% render_field form.quantity class+="form-control ml-sm-3" %}
+                    {{ form.override }}
+                </p>
+                {% csrf_token %}
+                <input class="btn btn-success" type="submit" value="Adicionar ao Carrinho">
+            </form>
             <p>
                 Voltar para o catálogo de
                 <a class="text-decoration-none" href="{{ product.category.get_absolute_url }}">

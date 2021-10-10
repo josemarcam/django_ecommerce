@@ -22,10 +22,10 @@ Produtos
                     Todos os produtos
                 </a>
 
-                {% for cat in categories %}
-                <a class="text-decoration-none list-group-item list-group-item-light {% if category == cat %}active{% endif %}"
-                    href="{{ cat.get_absolute_url }}">
-                    {{ cat.name }}
+                {% for cart in categories %}
+                <a class="text-decoration-none list-group-item list-group-item-light {% if category == cart %}active{% endif %}"
+                    href="{{ cart.get_absolute_url }}">
+                    {{ cart.name }}
                 </a>
                 {% endfor %}
             </ul>
@@ -71,6 +71,10 @@ Produtos
         </div>
     </div>
         {% if related_products %}
+        <div>
+            <h5>Produtos relacionados</h5>
+        </div>
+        <hr>
         {% include "products/related_products.html" %}
         {% endif %}
 </div>
