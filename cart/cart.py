@@ -16,14 +16,20 @@ class Cart:
     def __iter__(self):
         cart = copy.deepcopy(self.cart)
         products = Product.objects.filter(id__in=cart)
+        
         for product in products:
             cart[str(product.id)]["product"] = product
 
         for item in cart.values():
             item["price"] = Decimal(item["price"])
             item["total_price"] = item["quantity"] * item["price"]
+
+            inventory_choices = [
+                (i, str(i)) for i in range(1, item['product'].inventory + 1)
+            ]
             item["update_quantity_form"] = CartAddProductForm(
-                initial={"quantity": item["quantity"], "override": True}
+                initial={"quantity": item["quantity"], "override": True},
+                inventory=inventory_choices
             )
 
             yield item
@@ -54,8 +60,7 @@ class Cart:
             "quantity": quantity_update,
             "price": str(product.price)
         }
-
-        self.cart[product_id]["quantity"] = min(20, self.cart[product_id]["quantity"])
+        self.cart[product_id]["quantity"] = min(product.inventory, self.cart[product_id]["quantity"])
         
         self.save()
     

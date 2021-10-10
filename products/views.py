@@ -7,8 +7,19 @@ from cart.forms import CartAddProductForm
 # Create your views here.
 
 class ProductDetailsView(DetailView):
+    
+    def get(self, request, *args, **kwargs):
+    
+        self.object = self.get_object()
+        context = self.get_context_data(object=self.object)
+        
+        inventory_choices = [
+            (i, str(i)) for i in range(1, self.object.inventory + 1)
+        ]
+        context["form"] = CartAddProductForm(inventory= inventory_choices)
+        return self.render_to_response(context)
+    
     queryset = Product.available.all()
-    extra_context = {"form": CartAddProductForm()}
 
 class ProductListView(ListView):
     

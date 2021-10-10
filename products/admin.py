@@ -14,9 +14,10 @@ class ProductAdmin(admin.ModelAdmin):
         "slug",
         "category",
         "price",
+        "inventory",
         "is_available",
         "created",
         "modified",
     ]
     list_filter = ["is_available", "created", "modified"]
-    list_editable = ["price", "is_available"]
+    list_editable = ["price", "is_available","inventory"]
