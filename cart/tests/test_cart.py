@@ -151,8 +151,8 @@ def test_get_total_price(cart):
 
 
 def test_cant_add_more_than_max_items(product, cart):
-    cart.add(product, settings.CART_ITEM_MAX_QUANTITY)
-    assert len(cart) == settings.CART_ITEM_MAX_QUANTITY
+    cart.add(product, product.inventory)
+    assert len(cart) == product.inventory
 
     cart.add(product, 1)
-    assert len(cart) == settings.CART_ITEM_MAX_QUANTITY
+    assert len(cart) == product.inventory

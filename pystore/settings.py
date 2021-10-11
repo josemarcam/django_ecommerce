@@ -40,11 +40,14 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # terceiros
     "widget_tweaks",
+    "crispy_forms",
+    "localflavor",
     # meus
     'users.apps.UsersConfig',
     'pages.apps.PagesConfig',
     'products.apps.ProductsConfig', 
-    'cart.apps.CartConfig'
+    'cart.apps.CartConfig',
+    'orders.apps.OrdersConfig'
 
 ]
 
@@ -130,8 +133,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
-STATIC_URL = '/static/'
-STATICFILES_DIR = [BASE_DIR / "static"]
+STATIC_URL = "/static/"
+STATICFILES_DIRS = [BASE_DIR / "static"]
 STATIC_ROOT = BASE_DIR / "staticfiles"
 
 AUTH_USER_MODEL = 'users.User'
@@ -141,3 +144,5 @@ MEDIA_ROOT = BASE_DIR / "media"
 
 CART_SESSION_ID = "cart"
 CART_ITEM_MAX_QUANTITY = 20
+
+CRISPY_TEMPLATE_PACK = "bootstrap4"
