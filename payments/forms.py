@@ -82,3 +82,4 @@ class UpdatePaymentForm(forms.Form):
 
             payment.order.save()
             payment.save()
+            return payment

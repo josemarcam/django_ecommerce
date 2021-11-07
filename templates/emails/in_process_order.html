@@ -1,0 +1,12 @@
+{% extends 'emails/email_layout.html' %}
+{% block title %} Pagamento Em Analise {% endblock %}
+{% block content %} 
+<table>
+    <tr>
+        <td>            
+			<p style="line-height: 1.5">Olá {{customer_name}}. O seu pagamento esta sendo processado!</p>
+			{% include "order_summary.html" with items=order.items.all total_price=total_price %}
+        </td>
+    </tr>
+</table>
+{% endblock %}

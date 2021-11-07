@@ -1,0 +1,11 @@
+{% extends 'emails/email_layout.html' %}
+{% block title %} Pagamento Recusado {% endblock %}
+{% block content %} 
+<table>
+    <tr>
+        <td>            
+			<p style="line-height: 1.5">Olá {{customer_name}}. Infelizmente o seu Pagamento foi recusado!</p>
+        </td>
+    </tr>
+</table>
+{% endblock %}

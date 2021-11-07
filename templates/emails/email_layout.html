@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html style="font-family: Tahoma, Verdana, Segoe, sans-serif;">
+<body style="background: #eee; padding: 20px; width: 100%;">
+	<table cellpadding="0" cellspacing="0" width="700"
+		style="border-radius: 6px; margin:0 auto; background: #FFFFFF; font-size: 16px; font-family: 'Neo Sans Regular', sans-serif;">
+		<tr style="background: #FFDB8A">
+            <td style="font-size: 12px; padding: 15px 30px; border-radius: 6px 6px 0px 0px; position: relative">
+                <h1 style="float: left; color: #fff; margin-top: 15px; font-family: 'MontSerrat', sans-serif;">{% block title %} {% endblock %}</h1>
+                  <img style="display: block; float: right; margin-right: 10px; margin-top: 0px; height: 70px" src="http://smoky.com.br/assets/img/smokylogo.png" alt="Core" />
+              </td> 
+		</tr>
+        <tr>
+            <td style="padding: 30px 50px">
+                {% block content %}{% endblock %}
+            </td>
+        </tr>
+		<tr>
+			<td style="color: #111111; padding: 0px 50px">
+				<p style="line-height: 1.5">Abraços, <br>Equipe Smoky</p>
+				<br>
+				<br>
+			</td>
+		</tr>
+	</table>
+</body>
+</html>

@@ -152,3 +152,12 @@ env = environ.Env()
 env.read_env(str(BASE_DIR / ".env"))
 MERCADO_PAGO_PUBLIC_KEY=env("MERCADO_PAGO_PUBLIC_KEY")
 MERCADO_PAGO_ACCESS_TOKEN=env("MERCADO_PAGO_ACCESS_TOKEN")
+
+# EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+EMAIL_BACKEND = "anymail.backends.mailgun.EmailBackend"
+DEFAULT_FROM_EMAIL = "no-reply@smoky.com.br"
+SERVER_EMAIL = DEFAULT_FROM_EMAIL
+ANYMAIL = {
+    "MAILGUN_API_KEY":env("MAILGUN_API_KEY"),
+    "MAILGUN_SENDER_DOMAIN":env("MAILGUN_SENDER_DOMAIN")
+}

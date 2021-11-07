@@ -1,0 +1,12 @@
+{% extends 'emails/email_layout.html' %}
+{% block title %} Confirmação de Compra {% endblock %}
+{% block content %} 
+<table>
+    <tr>
+        <td>            
+			<p style="line-height: 1.5">Olá {{customer_name}}. Acabamos de Receber a confirmação do seu pegamento!</p>
+			{% include "order_summary.html" with items=order.items.all total_price=total_price %}
+        </td>
+    </tr>
+</table>
+{% endblock %}

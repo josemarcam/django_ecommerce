@@ -1,0 +1,5 @@
+** Resumo do Pedido
+------------------------------------------------------------
+{% for item in items %}
+* {{ item.quantity }}x {{ item.product.name }} R$ {{ item.total_price }}{{ item.get_total_price }} {% endfor %}
+* Total R$ {{ total_price }}
